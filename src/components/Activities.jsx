@@ -1,10 +1,10 @@
 import useQuery from "../api/useQuery";
 import { useAuth } from "../auth/AuthContext";
 
-export default function Activities() {
+export const  Activities = () => {
   const { data } = useQuery("/activities");
   const { token } = useAuth();
-  console.log(token);
+//   console.log(token);
 
   return (
     <div>
