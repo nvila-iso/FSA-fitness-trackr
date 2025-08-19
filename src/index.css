@@ -1,7 +1,26 @@
+:root {
+  --bg: #2b2f36;
+  --surface: #383e48;
+  --elevated: #434a56;
+  --text: #ecebee;
+  --muted: #a5adba;
+  --border: #4a5260;
+  --shadow: #161a20;
+
+  --accent: #5aa0ff;
+  --accent-2: #7bd389;
+  --accent-3: #f0b77a;
+  --accent-4: #c6b6ff;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  background-color: var(--bg);
 }
 
 form,
@@ -11,8 +30,15 @@ main {
   gap: 0.5rem;
 }
 
+p,
+h1,
+li,
+label {
+  color: var(--text);
+}
+
 #root {
-  width: 45ch;
+  width: 55ch;
   margin: 0 auto;
   padding: 1rem;
 }
@@ -29,12 +55,14 @@ header nav {
 }
 
 a {
-  color: teal;
+  color: var(--accent-2);
+  transition: color 0.2s ease-in-out;
 }
 
 a:hover {
   cursor: pointer;
   text-decoration: underline;
+  color: var(--accent-4);
 }
 
 ul,
@@ -42,7 +70,56 @@ ol {
   padding-left: 1rem;
 }
 
-/* li {
+.items-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  justify-content: center;
+  align-items: center;
+}
+
+li {
+  list-style-type: none;
+  border: 1px solid var(--border);
   display: flex;
-  flex-direction: column;
-} */
+  justify-content: space-between;
+  padding: 0.3rem;
+}
+
+button {
+  border: none;
+  background-color: var(--accent-4);
+
+  transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+button:hover {
+  background-color: var(--accent-3);
+  box-shadow: 5px 5px var(--shadow);
+}
+
+li button {
+  height: 1.4rem;
+  width: 30%;
+  margin: auto 0;
+}
+
+.user-item {
+  color: var(--accent);
+  font-weight: bold;
+}
+
+form {
+  margin: 1.2rem auto;
+  width: 75%;
+}
+
+form input {
+  height: 2rem;
+}
+
+form button {
+  width: 25%;
+  margin: 0 auto;
+  height: 1.8rem;
+}

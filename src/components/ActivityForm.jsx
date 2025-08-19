@@ -1,9 +1,9 @@
-import { useState } from "react";
 import useMutation from "../api/useMutation";
-// import { usePage } from "../layout/PageContext";
+import { useAuth } from "../auth/AuthContext";
 
 export const ActivityForm = () => {
-  const { mutate } = useMutation("POST", "/activities");
+  const { mutate } = useMutation("POST", "/activities", ["nicks-stuff"]);
+  const { token } = useAuth();
   // const { setPage } = useState("activities");
 
   const postForm = (FormData) => {
@@ -19,12 +19,13 @@ export const ActivityForm = () => {
     // FormData.preventDefault();
   };
 
-  return (
-    <div>
+  if (token) {
+    return (
       <form action={postForm}>
         <label>
           Activity Name:
           <input
+            required
             type="text"
             placeholder="Think of something cool!"
             name="name"
@@ -40,6 +41,6 @@ export const ActivityForm = () => {
         </label>
         <button>Submit!</button>
       </form>
-    </div>
-  );
+    );
+  }
 };
